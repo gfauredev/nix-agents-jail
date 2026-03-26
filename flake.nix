@@ -66,9 +66,10 @@
           ];
           mkCrush =
             {
+              name ? "jailcrush",
               extraPkgs ? [ ],
             }:
-            jail "jailed-crush" llm-agents.packages.${system}.crush (
+            jail name llm-agents.packages.${system}.crush (
               with jail.combinators;
               (
                 commonJailOptions
@@ -84,9 +85,10 @@
             );
           mkOpencode =
             {
+              name ? "jailopencode",
               extraPkgs ? [ ],
             }:
-            jail "jailed-opencode" llm-agents.packages.${system}.opencode (
+            jail name llm-agents.packages.${system}.opencode (
               with jail.combinators;
               (
                 commonJailOptions
@@ -102,7 +104,7 @@
             );
         in
         {
-          version = "0.1.0";
+          version = "0.1.1";
           inherit
             pkgs
             mkCrush
