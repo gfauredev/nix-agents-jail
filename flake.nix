@@ -42,16 +42,21 @@
             gzip
             gnutar
             jq
+            jujutsu
             moreutils
             ps
             ripgrep
             ripgrep-all
             sd
+            taplo # TOML LSP
+            typescript-language-server # TypeScript LSP
             uutils-coreutils
             unzip
+            vscode-langservers-extracted # HTML/CSS/JS(ON)
             wget
             which
             xh
+            yaml-language-server # YAML LSP
           ];
           commonJailOptions = with jail.combinators; [
             network
@@ -69,7 +74,9 @@
                 commonJailOptions
                 ++ [
                   (readwrite (noescape "~/.config/crush"))
+                  (readwrite (noescape "~/.cache/crush"))
                   (readwrite (noescape "~/.local/share/crush"))
+                  (readwrite (noescape "~/.local/state/crush"))
                   (add-pkg-deps commonPkgs)
                   (add-pkg-deps extraPkgs)
                 ]
@@ -85,6 +92,7 @@
                 commonJailOptions
                 ++ [
                   (readwrite (noescape "~/.config/opencode"))
+                  (readwrite (noescape "~/.cache/opencode"))
                   (readwrite (noescape "~/.local/share/opencode"))
                   (readwrite (noescape "~/.local/state/opencode"))
                   (add-pkg-deps commonPkgs)
